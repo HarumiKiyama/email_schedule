@@ -1,4 +1,4 @@
 -r requirements.txt
-pytest
-pytest-cov
-flake8
+pytest==5.3.1
+pytest-cov==2.8.1
+flake8==3.7.9
