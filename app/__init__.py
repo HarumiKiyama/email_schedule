@@ -6,10 +6,6 @@ from flask import Flask
 class App(Flask):
 
     def _register_extension(self, name, ext):
-        """register extension
-        :param name: extension name
-        :param ext: extension object
-        """
         ext.init_app(self)
         if name not in self.extensions:
             self.extensions[name] = ext
@@ -22,8 +18,5 @@ class App(Flask):
         return self.extensions
 
     def ready(self):
-        """
-        do anything you want after initiation,
-        for example register blueprint or set test_client_class for your app
-        """
+        # TODO: register blueprint
         pass
