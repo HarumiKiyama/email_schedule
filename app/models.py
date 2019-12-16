@@ -1,12 +1,12 @@
 from app.extensions import pwx
-from datetime.datetime import now
-from peewee import CharField, IntegerField, TextField, DatetimeField
+from datetime import datetime
+from peewee import CharField, IntegerField, TextField, DateTimeField
 
 
 class EmailLog(pwx.Model):
     to = CharField(max_length=50)
     body = TextField()
     status = IntegerField()
-    send_at = DatetimeField()
-    created_at = DatetimeField(default=now)
-    updated_at = DatetimeField(default=now)
+    send_at = DateTimeField()
+    created_at = DateTimeField(default=datetime.now)
+    updated_at = DateTimeField(default=datetime.now)
