@@ -8,14 +8,14 @@ class EmailScheduleView(MethodView):
     def post(self):
         data = request.get_json()
         if data.get('eta') is not None:
+            # TODO: check whether eta is greater than today
             send_at = data['eta']
         else:
-            count_down = data['count_down']
+            countdown = data['countdown']
             send_at = datetime.datetime.now() + datetime.timedelta(
-                **count_down)
+                **countdown)
         EmailLog.create(subject=data['subject'],
                         body=data['body'],
                         to=data['to'],
-                        cc=data['cc'],
                         send_at=send_at)
         return jsonify()
