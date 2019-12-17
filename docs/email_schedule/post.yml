@@ -1,0 +1,36 @@
+requestBody:
+  required: true
+  content:
+    application/json:
+      schema:
+        oneOf:
+          - type: object
+            properties:
+              to:
+                type: string
+              body:
+                type: string
+              subject:
+                type: string
+              eta:
+                type: string
+          - type: object
+            properties:
+              to:
+                type: string
+              body:
+                type: string
+              subject:
+                type: string
+              countdown:
+                type: object
+                properties:
+                  hours:
+                    type: integer
+                  minutes:
+                    type: integer
+                  seconds:
+                    type: integer
+responses:
+  200:
+    description: email scheduled
