@@ -1,5 +1,6 @@
 import inspect
 from flask import Flask
+from flasgger import Swagger
 import os
 import sys
 from werkzeug.utils import import_string
@@ -72,6 +73,7 @@ def create_app(root_path=None):
 
     _app = App(__name__, root_path=root_path)
     CORS(_app)
+    Swagger(_app)
     _app.config.from_object(config)
     _app.load_extensions_in_module(import_string('app.extensions'))
     _app.ready()
