@@ -1,4 +1,7 @@
-SWAGGER = {'doc_path': '/docs'}
+SWAGGER = {
+    'doc_dir': '../docs',
+    'openapi': '3.0.2',
+}
 
 PW_DB_URL = 'mysql+pool://mysql:3306/'
 PW_CONN_PARAMS = {
