@@ -23,5 +23,5 @@ class Peeweext:
     def connect_db(self):
         self.database.connect()
 
-    def close_db(self):
+    def close_db(self, exc):
         self.database.close()
