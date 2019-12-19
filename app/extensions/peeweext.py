@@ -21,7 +21,9 @@ class Peeweext:
         return BaseModel
 
     def connect_db(self):
-        self.database.connect()
+        if self.database.is_closed():
+            self.database.connect()
 
     def close_db(self, exc):
-        self.database.close()
+        if not self.database.is_closed():
+            self.database.close()
