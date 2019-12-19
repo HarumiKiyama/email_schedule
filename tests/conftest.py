@@ -26,7 +26,7 @@ def client(app):
 
 
 @pytest.fixture(scope='session')
-def fake():
+def faker():
     return Faker()
 
 

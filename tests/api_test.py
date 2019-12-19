@@ -1,10 +1,10 @@
 def test_schedule_email_by_eta(client, faker):
     resp = client.post('/email/schedule',
                        json={
-                           'to': faker.email,
-                           'eta': str(faker.datetime),
-                           'body': faker.text,
-                           'subject': faker.title
+                           'to': faker.email(),
+                           'eta': str(faker.date_time()),
+                           'body': faker.text(),
+                           'subject': faker.sentence()
                        })
     assert resp.status_code == 200
 
