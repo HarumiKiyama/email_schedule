@@ -1,7 +1,13 @@
 language: python
+services:
+  - mysql
 python:
   - 3.7
 install:
   pip install -r test-requirements.txt
+before_script:
+  - sudo mysql -e 'CREATE DATABASE email_test DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;'
+  - sudo mysql -e 'SET PASSWORD FOR root@localhost = "12345678";'
 script:
   flake8 app/ tests/
+  python runtest.py
