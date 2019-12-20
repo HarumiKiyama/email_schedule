@@ -12,3 +12,7 @@ PW_CONN_PARAMS = {
     'user': 'root',
     'password': '12345678'
 }
+
+EMAIL_DOMAIN_NAME = 'xxx'
+EMAIL_SENDER = 'xxx'
+EMAIL_API_KEY = 'xxx'
