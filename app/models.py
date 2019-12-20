@@ -21,5 +21,9 @@ class EmailLog(pwx.Model):
     body = TextField()
     status = IntegerField(default=SCHEDULED, choices=STATUS_CHOICES)
     send_at = DateTimeField()
+    email_id = CharField(max_length=100, unique=True, null=True)
     created_at = DateTimeField(default=datetime.now)
     updated_at = DateTimeField(default=datetime.now)
+
+    class Meta:
+        table_name = 'email_log'
