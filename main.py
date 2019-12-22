@@ -22,13 +22,19 @@ def main():
         return WSGIApplication('%(prog)s [OPTIONS]').run()
     elif args[0] == 'shell':
         _app = create_app()
-        banner = '[Atlas API Console]:\n`ALTAS_ENV` is {}\nplease be careful\nthe following vars are included:\n`app` (the current app)\n'.format(  # noqa
-            os.environ.get('ATLAS_ENV', 'testing'))
+        banner = '[EMAIL Console]:\n`EMAIL_ENV` is {}\nplease be careful\nthe following vars are included:\n`app` (the current app)\n'.format(  # noqa
+            os.environ.get('EMAIL_ENV', 'testing'))
         ctx = {'app': _app}
         from IPython.terminal.embed import InteractiveShellEmbed
         ipshell = InteractiveShellEmbed(user_ns=ctx, banner1=banner)
         ipshell()
         return 0
+    elif args[0] == 'celery':
+        create_app()
+        from celery.__main__ import main as celerymain
+        sys.argv = args
+        sys.argv.extend(['-A', 'app.extensions:celeryapp'])
+        return celerymain()
     raise KeyError
 
 
