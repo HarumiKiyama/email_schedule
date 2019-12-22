@@ -15,20 +15,21 @@ class Mailgunext:
         self.api_key = opts['api_key']
 
     def send_email(self, to, subject, body):
-        return requests.post(self.send_api,
-                             auth=('api', self.api_key),
-                             data={
-                                 'from':
-                                 '{}@{}'.format(self.sender, self.domain_name),
-                                 'to':
-                                 to,
-                                 'subject':
-                                 subject,
-                                 'text':
-                                 body,
-                                 'o:tracking':
-                                 True,
-                             })
+        rv = requests.post(self.send_api,
+                           auth=('api', self.api_key),
+                           data={
+                               'from':
+                               '{}@{}'.format(self.sender, self.domain_name),
+                               'to':
+                               to,
+                               'subject':
+                               subject,
+                               'text':
+                               body,
+                               'o:tracking':
+                               True,
+                           })
+        return rv.json()
 
     def verify(self, token, timestamp, signature):
         hmac_digest = hmac.new(key=self.api_key.encode(),

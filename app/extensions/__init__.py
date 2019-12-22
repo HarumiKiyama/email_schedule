@@ -1,5 +1,7 @@
 from .peeweext import Peeweext
 from .mailgunext import Mailgunext
+from .celeryext import Celeryext
 
 pwx = Peeweext()
-emailext = Mailgunext()
+mailext = Mailgunext()
+celeryapp = Celeryext()
