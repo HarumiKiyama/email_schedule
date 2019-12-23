@@ -6,12 +6,14 @@ from peewee import CharField, IntegerField, TextField, DateTimeField
 class EmailLog(pwx.Model):
     SCHEDULED = 0
     IN_QUEUE = 1
-    SEND_FAILED = 2
-    SEND_SUCCESSFULLY = 3
-    OPENED = 4
+    SEND_MAILGUN = 2
+    SEND_FAILED = 3
+    SEND_SUCCESSFULLY = 4
+    OPENED = 5
     STATUS_CHOICES = (
         (SCHEDULED, 'email scheduled'),
         (IN_QUEUE, 'email in queue ready for sending'),
+        (SEND_MAILGUN, 'email send to mailgun'),
         (SEND_FAILED, 'email send failed'),
         (SEND_SUCCESSFULLY, 'email send successfully'),
         (OPENED, 'email opened'),
