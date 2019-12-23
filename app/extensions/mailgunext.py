@@ -2,6 +2,8 @@ import requests
 import hashlib
 import hmac
 
+from app.exceptions import MailGunCallException
+
 
 class Mailgunext:
     def __init__(self, ns='EMAIL_'):
@@ -29,6 +31,10 @@ class Mailgunext:
                                'o:tracking':
                                True,
                            })
+        if rv.status_code != 200:
+            raise MailGunCallException(
+                'call mailgun error, status_code: {}, response content: {}'.
+                format(rv.status_code, rv.content))
         return rv.json()
 
     def verify(self, token, timestamp, signature):
