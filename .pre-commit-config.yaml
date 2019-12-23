@@ -14,4 +14,5 @@ repos:
 -   repo: https://gitlab.com/pycqa/flake8
     rev: 3.7.9
     hooks:
-    -   id: flake8
+    - id: flake8
+      args: [--exclude=cofigs/]
