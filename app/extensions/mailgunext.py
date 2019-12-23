@@ -26,9 +26,11 @@ class Mailgunext:
                                to,
                                'subject':
                                subject,
-                               'text':
-                               body,
+                               'html':
+                               '<html><div>{}<div></html>'.format(body),
                                'o:tracking':
+                               True,
+                               'o:tracking-opens':
                                True,
                            })
         if rv.status_code != 200:
