@@ -8,7 +8,7 @@ from gunicorn.app.base import Application
 
 class WSGIApplication(Application):
     def init(self, parser, opts, args):
-        self.cfg.set('proc_name', 'atlas_api')
+        self.cfg.set('proc_name', 'email_schedule')
         self.cfg.set('bind', '0.0.0.0:8080')
 
     def load(self):
