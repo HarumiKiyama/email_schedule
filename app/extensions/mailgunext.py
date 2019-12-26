@@ -11,8 +11,9 @@ class Mailgunext:
 
     def init_app(self, app):
         opts = app.config.get_namespace(self.ns)
+        self.domain_name = opts['domain_name']
         self.send_api = 'https://api.mailgun.net/v3/{}/messages'.format(
-            opts['domain_name'])
+            self.domain_name)
         self.sender = opts['sender']
         self.api_key = opts['api_key']
 
