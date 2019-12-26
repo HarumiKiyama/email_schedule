@@ -13,7 +13,7 @@ class AppPlugins:
 def main():
     os.environ['EMAIL_ENV'] = 'testing'
     args = sys.argv[1:]
-    sys.exit(pytest.main(['-v', *args], plugins=[AppPlugins]))
+    sys.exit(pytest.main(['-vx', *args], plugins=[AppPlugins]))
 
 
 if __name__ == '__main__':
