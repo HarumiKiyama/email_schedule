@@ -73,9 +73,9 @@ def email_logs(faker):
     yield
 
 
-# def pytest_sessionfinish(session, exitstatus):
-#     models = (EmailLog, )
-#     pwx.database.drop_tables(models)
+def pytest_sessionfinish(session, exitstatus):
+    models = (EmailLog, )
+    pwx.database.drop_tables(models)
 
 
 def pytest_sessionstart(session):
