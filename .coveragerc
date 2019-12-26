@@ -1,2 +1,4 @@
 [run]
-omit = nocover_*.py
+omit =
+     nocover_*.py
+     app/__init__.py
