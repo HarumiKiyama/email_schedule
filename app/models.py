@@ -21,11 +21,13 @@ class EmailLog(pwx.Model):
 
     to = CharField(max_length=50)
     body = TextField()
+    subject = TextField()
     status = IntegerField(default=SCHEDULED, choices=STATUS_CHOICES)
     send_at = DateTimeField()
-    email_id = CharField(max_length=100, unique=True, null=True)
+    email_id = CharField(max_length=100, null=True)
     created_at = DateTimeField(default=datetime.now)
     updated_at = DateTimeField(default=datetime.now)
 
     class Meta:
-        table_name = 'email_log'
+        indexes = ((('email_id', 'send_at'), True), )
+        table_name = 'email_logs'
